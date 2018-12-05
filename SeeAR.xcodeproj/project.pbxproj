@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55A25E5F21B879080055EE98 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55A25E5E21B879080055EE98 /* CloudKit.framework */; };
 		55EC1E5721B77F4E00A1293C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC1E5621B77F4E00A1293C /* AppDelegate.swift */; };
 		55EC1E5921B77F4E00A1293C /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 55EC1E5821B77F4E00A1293C /* art.scnassets */; };
 		55EC1E5B21B77F4E00A1293C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC1E5A21B77F4E00A1293C /* ViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		55A25E5E21B879080055EE98 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		55EC1E5321B77F4E00A1293C /* SeeAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeeAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55EC1E5621B77F4E00A1293C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55EC1E5821B77F4E00A1293C /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -49,6 +51,7 @@
 		55EC1E7421B77F5000A1293C /* SeeARUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeeARUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55EC1E7821B77F5000A1293C /* SeeARUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeARUITests.swift; sourceTree = "<group>"; };
 		55EC1E7A21B77F5000A1293C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55EC1E8621B7868800A1293C /* SeeAR.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SeeAR.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55A25E5F21B879080055EE98 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +80,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55A25E5D21B879080055EE98 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				55A25E5E21B879080055EE98 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		55EC1E4A21B77F4E00A1293C = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +95,7 @@
 				55EC1E6C21B77F5000A1293C /* SeeARTests */,
 				55EC1E7721B77F5000A1293C /* SeeARUITests */,
 				55EC1E5421B77F4E00A1293C /* Products */,
+				55A25E5D21B879080055EE98 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +112,7 @@
 		55EC1E5521B77F4E00A1293C /* SeeAR */ = {
 			isa = PBXGroup;
 			children = (
+				55EC1E8621B7868800A1293C /* SeeAR.entitlements */,
 				55EC1E5621B77F4E00A1293C /* AppDelegate.swift */,
 				55EC1E5821B77F4E00A1293C /* art.scnassets */,
 				55EC1E5A21B77F4E00A1293C /* ViewController.swift */,
@@ -196,6 +210,17 @@
 				TargetAttributes = {
 					55EC1E5221B77F4E00A1293C = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					55EC1E6821B77F5000A1293C = {
 						CreatedOnToolsVersion = 10.1;
@@ -436,6 +461,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SeeAR/SeeAR.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 835HC59RFV;
 				INFOPLIST_FILE = SeeAR/Info.plist;
@@ -445,6 +472,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = slimelime.SeeAR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -454,6 +482,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SeeAR/SeeAR.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 835HC59RFV;
 				INFOPLIST_FILE = SeeAR/Info.plist;
@@ -463,6 +493,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = slimelime.SeeAR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
