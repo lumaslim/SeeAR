@@ -13,14 +13,16 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
     var measurementLabel = UILabel()
     
+    // - MARK: - Interactions
+
     @IBOutlet var sceneView: ARSCNView!
     
+    // - MARK: - App life cycle hooks
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Set the view's delegate
         sceneView.delegate = self
-        
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         
@@ -30,13 +32,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 //        // Set the scene to the view
 //        sceneView.scene = scene
         
-        // Label background and formatting to show measurements
-        measurementLabel.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100)
-        measurementLabel.backgroundColor = .white
-        measurementLabel.text = "0 inches"
-        measurementLabel.textAlignment = .center
         
-        view.addSubview(measurementLabel)
+        // Set up information label to add to the main view
+        let measurementLabel = getMeasurementLabel()
+        self.view.addSubview(measurementLabel)
+        
+        // Set up interactions to add to scene
+        let tapRecogniser = UITapGestureRecognizer(target: self, action: #selector(isTap))
+        sceneView.addGestureRecognizer(tapRecogniser)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,8 +59,20 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
 
+    // MARK: - Setup
+    
+    func getMeasurementLabel() -> UILabel {
+        // Label background and formatting to show measurements
+        measurementLabel.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100)
+        measurementLabel.backgroundColor = .white
+        measurementLabel.text = "0 inches"
+        measurementLabel.textAlignment = .center
+        
+        return measurementLabel
+    }
+    
     // MARK: - Utilities
-    func createSphere(at position: SCNVector3) -> SCNNode {
+    func getSphereNode(at position: SCNVector3) -> SCNNode {
         // Create geometry object
         let sphereGeo = getThemedSphere()
         // Establish SCNNode coordinate with attached geometry object
@@ -85,6 +100,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         return material
     }
     
+    // - MARK: - Interaction handlers
+    
+    @objc func isTap() {
+        // Interaction #selector requires obj-C-exposure.
+        print("ViewController:: isTap())")
+    }
     // MARK: - ARSCNViewDelegate
     
 /*
