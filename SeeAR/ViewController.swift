@@ -59,13 +59,34 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     // MARK: - Utilities
     func createSphere(at position: SCNVector3) -> SCNNode {
         // Create geometry object
-        let sphereGeo = SCNSphere(radius: 0.01)
+        let sphereGeo = getThemedSphere()
         // Establish SCNNode coordinate with attached geometry object
         let sphereNode = SCNNode(geometry: sphereGeo)
+        
+
+        
+        
         // Set the node position
         sphereNode.position = position
         
         return sphereNode
+    }
+    
+    func getThemedSphere() -> SCNSphere {
+        let sphereGeometry = SCNSphere(radius: 0.01)
+        let sphereThemeMaterial = getMaterialVisuals()
+        
+        sphereGeometry.firstMaterial = sphereThemeMaterial
+        
+        return sphereGeometry
+    }
+    
+    func getMaterialVisuals() -> SCNMaterial {
+        let material = SCNMaterial()
+        material.diffuse.contents = UIColor.orange
+        material.lightingModel = .blinn
+        
+        return material
     }
     
     // MARK: - ARSCNViewDelegate
