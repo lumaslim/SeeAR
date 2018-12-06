@@ -12,6 +12,7 @@ import ARKit
 
 class ViewController: UIViewController, ARSCNViewDelegate {
     var measurementLabel = UILabel()
+    var spheres = [SCNVector3]()
     
     // - MARK: - Interactions
 
@@ -22,9 +23,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         super.viewDidLoad()
         
         // Set the view's delegate
-        sceneView.delegate = self
+        self.sceneView.delegate = self
         // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
+        self.sceneView.showsStatistics = true
         
 //        // Create a new scene
 //        let scene = SCNScene(named: "art.scnassets/ship.scn")!
@@ -34,12 +35,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         
         // Set up information label to add to the main view
-        let measurementLabel = getMeasurementLabel()
-        self.view.addSubview(measurementLabel)
+        self.measurementLabel = getMeasurementLabel()
+        self.view.addSubview(self.measurementLabel)
         
         // Set up interactions to add to scene
         let tapRecogniser = UITapGestureRecognizer(target: self, action: #selector(isTap))
-        sceneView.addGestureRecognizer(tapRecogniser)
+        self.sceneView.addGestureRecognizer(tapRecogniser)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,19 +50,20 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let configuration = ARWorldTrackingConfiguration()
 
         // Run the view's session
-        sceneView.session.run(configuration)
+        self.sceneView.session.run(configuration)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         // Pause the view's session
-        sceneView.session.pause()
+        self.sceneView.session.pause()
     }
 
     // MARK: - Setup
     
     func getMeasurementLabel() -> UILabel {
+        let measurementLabel = UILabel()
         // Label background and formatting to show measurements
         measurementLabel.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100)
         measurementLabel.backgroundColor = .white
@@ -104,13 +106,24 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @objc func isTap(sender: UITapGestureRecognizer) {
         // Interaction #selector requires obj-C-exposure.
-        // print("ViewController:: isTap())", sender)
+        print("ViewController:: isTap())", sender)
         
         let tapLocation = sender.location(in: sceneView)
         let hitTestResults: [ARHitTestResult] = sceneView.hitTest(tapLocation, types: [ARHitTestResult.ResultType.featurePoint])
         // Feature point nearest to the hit ray AR from real world space.
         guard let tapPoint: ARHitTestResult = hitTestResults.last else { return }
+        print(tapPoint.anchor, tapPoint.distance, tapPoint.accessibilityActivationPoint)
         
+        // Matrix converted for scene kit use
+        let transform = SCNMatrix4(tapPoint.worldTransform)
+        let vector: SCNVector3 = SCNVector3Make(transform.m41, transform.m42, transform.m43)
+        let sphere: SCNNode = self.getSphereNode(at: vector)
+        self.sceneView.scene.rootNode.addChildNode(sphere) 
+        guard let sphereExist = self.spheres.first else { return }
+        
+        print("spheres already exist", sphereExist)
+        
+
     }
     // MARK: - ARSCNViewDelegate
     
