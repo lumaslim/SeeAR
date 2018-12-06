@@ -56,6 +56,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
 
+    // MARK: - Utilities
+    func createSphere(at position: SCNVector3) -> SCNNode {
+        // Create geometry object
+        let sphereGeo = SCNSphere(radius: 0.01)
+        // Establish SCNNode coordinate with attached geometry object
+        let sphereNode = SCNNode(geometry: sphereGeo)
+        // Set the node position
+        sphereNode.position = position
+        
+        return sphereNode
+    }
+    
     // MARK: - ARSCNViewDelegate
     
 /*
