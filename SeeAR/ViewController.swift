@@ -26,6 +26,14 @@ extension SCNNode {
         return metres
     }
     
+    /// Distance formula for SCNNodes utility. Calculate the distance between
+    /// this node in relation to the destination node referenced.
+    ///
+    /// - Parameter destination: The destination relative ref point to calculate
+    /// - Returns: distance in centimetres
+    func distanceInCentimetres(to destination: SCNNode) -> CGFloat {
+        return self.distance(to: destination) * 100
+    }
 }
 class ViewController: UIViewController, ARSCNViewDelegate {
     var measurementLabel = UILabel()
