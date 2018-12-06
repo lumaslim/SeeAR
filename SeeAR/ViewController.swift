@@ -186,7 +186,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         self.spheres.forEach{ (sphere: SCNNode) in
             print("removing sphere", sphere)
             sphere.removeFromParentNode()
-            
+            return
         }
         self.resetSpheres()
         // new Xcode 10 has some VERY STRANGE auto-formatting rules... -_-"
