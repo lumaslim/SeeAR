@@ -17,12 +17,14 @@ extension SCNNode {
         // Alias
         let pt1: SCNVector3 = self.position
         let pt2: SCNVector3 = destination.position
+        print("Compare distance pt1 pt2", pt1, pt2)
         // For Cartesian distance in metres
         let dx: Float = pt2.x - pt1.x
         let dy: Float = pt2.y - pt1.y
         let dz: Float = pt2.z - pt1.z
         
         let metres: CGFloat = CGFloat( sqrt(dx * dx + dy * dy + dz * dz) )
+        print("Compare distance metres", metres, dx, dy, dz)
         return metres
     }
     
@@ -36,8 +38,11 @@ extension SCNNode {
     }
 }
 class ViewController: UIViewController, ARSCNViewDelegate {
-    var measurementLabel = UILabel()
-    var spheres = [SCNVector3]()
+    
+    // temp string template for measurements - TODO: Enum localisation  https://stackoverflow.com/questions/29424637/create-string-template-in-swift
+    let STRING_MEASUREMENTS_LABEL_TEMPLATE = "%.2f centimetres"
+    var measurementLabel: UILabel = UILabel()
+    var spheres: [SCNNode] = [SCNNode]()
     
     // - MARK: - Interactions
 
@@ -92,7 +97,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Label background and formatting to show measurements
         measurementLabel.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100)
         measurementLabel.backgroundColor = .white
-        measurementLabel.text = "0 inches"
+        measurementLabel.text = self.formatMeasurementText(metricLength: 0.00)
         measurementLabel.textAlignment = .center
         
         return measurementLabel
@@ -135,28 +140,64 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Interaction #selector requires obj-C-exposure.
         print("ViewController:: isTap())", sender)
         
+        
         let tapLocation = sender.location(in: sceneView)
         let hitTestResults: [ARHitTestResult] = sceneView.hitTest(tapLocation, types: [ARHitTestResult.ResultType.featurePoint])
         // Feature point nearest to the hit ray AR from real world space.
-        guard let tapPoint: ARHitTestResult = hitTestResults.last else { return }
-        print(tapPoint.anchor, tapPoint.distance, tapPoint.accessibilityActivationPoint)
+        guard let tapPoint: ARHitTestResult = hitTestResults.last else {
+            print("Not enough real world information")
+            return
+        }
+        print(tapPoint.anchor ?? 0, tapPoint.distance, tapPoint.accessibilityActivationPoint)
+        
+        // example code is messy.... too much global state.
+        
+        // Should split off a spherehandler.
+        
+        if checkTooManySpheresExist() {
+            print("Too many spheres already exist")
+            self.resetDestinationSpheres()
+            return
+        }
+        
         
         // Matrix converted for scene kit use. Real world depth sense.
         let transform = SCNMatrix4(tapPoint.worldTransform)
         let vector: SCNVector3 = SCNVector3Make(transform.m41, transform.m42, transform.m43)
         let sphere: SCNNode = self.getSphereNode(at: vector)
         
+        let sceneNode = self.sceneView.scene.rootNode
+        sceneNode.addChildNode(sphere)
+
+        self.spheres.append(sphere)
         
-        self.sceneView.scene.rootNode.addChildNode(sphere) 
-        if let sphereExist = self.spheres.first {
-            print("spheres already exist", sphereExist)
-            return
+        print("2 or less spheres....") // rip.
+
+        self.measurementLabel.text = self.formatMeasurementText(metricLength: sphere.distanceInCentimetres(to: self.spheres[0]))
+
+    }
+    
+    func checkTooManySpheresExist() -> Bool {
+        return self.spheres.count >= 2
+    }
+    
+    /// reset
+    func resetDestinationSpheres() {
+        self.spheres.forEach{ (sphere: SCNNode) in
+            print("removing sphere", sphere)
+            sphere.removeFromParentNode()
+            
         }
-        
-        print("spheres do not exist yet")
-
-        
-
+        self.resetSpheres()
+        // new Xcode 10 has some VERY STRANGE auto-formatting rules... -_-"
+//        self.spheres.removeSubrange(1...) // remove everything except first sphere
+    }
+    
+    func resetSpheres() {
+        self.spheres.removeAll()
+    }
+    func formatMeasurementText(metricLength: CGFloat) -> String {
+        return String.init(format: STRING_MEASUREMENTS_LABEL_TEMPLATE, arguments: [metricLength])
     }
     // MARK: - ARSCNViewDelegate
     
