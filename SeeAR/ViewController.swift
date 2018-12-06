@@ -102,9 +102,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     // - MARK: - Interaction handlers
     
-    @objc func isTap() {
+    @objc func isTap(sender: UITapGestureRecognizer) {
         // Interaction #selector requires obj-C-exposure.
-        print("ViewController:: isTap())")
+        // print("ViewController:: isTap())", sender)
+        
+        let tapLocation = sender.location(in: sceneView)
+        let hitTestResults: [ARHitTestResult] = sceneView.hitTest(tapLocation, types: [ARHitTestResult.ResultType.featurePoint])
+        // Feature point nearest to the hit ray AR from real world space.
+        guard let tapPoint: ARHitTestResult = hitTestResults.last else { return }
+        
     }
     // MARK: - ARSCNViewDelegate
     
