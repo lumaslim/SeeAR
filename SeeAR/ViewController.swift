@@ -62,11 +62,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let sphereGeo = getThemedSphere()
         // Establish SCNNode coordinate with attached geometry object
         let sphereNode = SCNNode(geometry: sphereGeo)
-        
-
-        
-        
-        // Set the node position
+        // Set the node position...
         sphereNode.position = position
         
         return sphereNode
