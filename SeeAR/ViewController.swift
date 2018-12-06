@@ -10,6 +10,23 @@ import UIKit
 import SceneKit
 import ARKit
 
+extension SCNNode {
+    func distance(to destination: SCNNode) -> CGFloat {
+        // - TODO: Try overloading operators for vector calculation practice.
+        
+        // Alias
+        let pt1: SCNVector3 = self.position
+        let pt2: SCNVector3 = destination.position
+        // For Cartesian distance in metres
+        let dx: Float = pt2.x - pt1.x
+        let dy: Float = pt2.y - pt1.y
+        let dz: Float = pt2.z - pt1.z
+        
+        let metres: CGFloat = CGFloat( sqrt(dx * dx + dy * dy + dz * dz) )
+        return metres
+    }
+    
+}
 class ViewController: UIViewController, ARSCNViewDelegate {
     var measurementLabel = UILabel()
     var spheres = [SCNVector3]()
@@ -116,14 +133,20 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         guard let tapPoint: ARHitTestResult = hitTestResults.last else { return }
         print(tapPoint.anchor, tapPoint.distance, tapPoint.accessibilityActivationPoint)
         
-        // Matrix converted for scene kit use
+        // Matrix converted for scene kit use. Real world depth sense.
         let transform = SCNMatrix4(tapPoint.worldTransform)
         let vector: SCNVector3 = SCNVector3Make(transform.m41, transform.m42, transform.m43)
         let sphere: SCNNode = self.getSphereNode(at: vector)
-        self.sceneView.scene.rootNode.addChildNode(sphere) 
-        guard let sphereExist = self.spheres.first else { return }
         
-        print("spheres already exist", sphereExist)
+        
+        self.sceneView.scene.rootNode.addChildNode(sphere) 
+        if let sphereExist = self.spheres.first {
+            print("spheres already exist", sphereExist)
+            return
+        }
+        
+        print("spheres do not exist yet")
+
         
 
     }
