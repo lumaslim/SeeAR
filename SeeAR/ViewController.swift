@@ -11,7 +11,8 @@ import SceneKit
 import ARKit
 
 class ViewController: UIViewController, ARSCNViewDelegate {
-
+    var measurementLabel = UILabel()
+    
     @IBOutlet var sceneView: ARSCNView!
     
     override func viewDidLoad() {
@@ -23,11 +24,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         
-        // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+//        // Create a new scene
+//        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+//
+//        // Set the scene to the view
+//        sceneView.scene = scene
         
-        // Set the scene to the view
-        sceneView.scene = scene
+        // Label background and formatting to show measurements
+        measurementLabel.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100)
+        measurementLabel.backgroundColor = .white
+        measurementLabel.text = "0 inches"
+        measurementLabel.textAlignment = .center
+        
+        view.addSubview(measurementLabel)
     }
     
     override func viewWillAppear(_ animated: Bool) {
