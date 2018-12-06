@@ -96,7 +96,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func getMaterialVisuals() -> SCNMaterial {
         let material = SCNMaterial()
-        material.diffuse.contents = UIColor.orange
+        let skyBlue = UIColor(red: 0, green: 0.87, blue: 0.90, alpha: 1)
+        material.diffuse.contents = skyBlue
+        
         material.lightingModel = .blinn
         
         return material
