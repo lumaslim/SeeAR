@@ -11,8 +11,10 @@ import struct SceneKit.CGFloat
 
 // lol name
 protocol SCNNodeDistanceable {
+    // Faster
     func distanceSquared(to destination: SCNNode) -> CGFloat
-    func distance(to destination: SCNNode) -> CGFloat
     
+    // Slower
+    func distance(to destination: SCNNode) -> CGFloat
 }
 

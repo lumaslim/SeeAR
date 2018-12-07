@@ -5,9 +5,9 @@
 //  Created by SLim on 7/12/18.
 //  Copyright © 2018 SLim. All rights reserved.
 //
-import SceneKit.SCNNode
+import SceneKit
 
-extension SCNNode {
+extension SCNNode: SCNNodeDistanceable {
     
     func distanceSquared(to destination: SCNNode) -> CGFloat {
         // - TODO: Try overloading operators for vector calculation practice.
