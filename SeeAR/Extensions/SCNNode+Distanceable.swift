@@ -7,7 +7,7 @@
 //
 import SceneKit
 
-extension SCNNode: SCNNodeDistanceable {
+extension SCNNode: Distanceable {
     
     func distanceSquared(to destination: SCNNode) -> CGFloat {
         // - TODO: Try overloading operators for vector calculation practice.

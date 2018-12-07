@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		559CB69521B9AEE20081B3F4 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559CB69421B9AEE20081B3F4 /* UIView+Extension.swift */; };
-		559CB69821B9AF040081B3F4 /* SCNNode+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559CB69721B9AF040081B3F4 /* SCNNode+Extension.swift */; };
+		559CB69821B9AF040081B3F4 /* SCNNode+Distanceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559CB69721B9AF040081B3F4 /* SCNNode+Distanceable.swift */; };
 		559CB69B21B9E83F0081B3F4 /* VectorCalculatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559CB69A21B9E83F0081B3F4 /* VectorCalculatable.swift */; };
-		559CB6A221BA34E90081B3F4 /* SCNNodeDistanceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559CB6A121BA34E90081B3F4 /* SCNNodeDistanceable.swift */; };
+		559CB6A221BA34E90081B3F4 /* Distanceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559CB6A121BA34E90081B3F4 /* Distanceable.swift */; };
 		55A25E5F21B879080055EE98 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55A25E5E21B879080055EE98 /* CloudKit.framework */; };
 		55EC1E5721B77F4E00A1293C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC1E5621B77F4E00A1293C /* AppDelegate.swift */; };
 		55EC1E5921B77F4E00A1293C /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 55EC1E5821B77F4E00A1293C /* art.scnassets */; };
@@ -41,9 +41,9 @@
 
 /* Begin PBXFileReference section */
 		559CB69421B9AEE20081B3F4 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		559CB69721B9AF040081B3F4 /* SCNNode+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNNode+Extension.swift"; sourceTree = "<group>"; };
+		559CB69721B9AF040081B3F4 /* SCNNode+Distanceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNNode+Distanceable.swift"; sourceTree = "<group>"; };
 		559CB69A21B9E83F0081B3F4 /* VectorCalculatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorCalculatable.swift; sourceTree = "<group>"; };
-		559CB6A121BA34E90081B3F4 /* SCNNodeDistanceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNNodeDistanceable.swift; sourceTree = "<group>"; };
+		559CB6A121BA34E90081B3F4 /* Distanceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distanceable.swift; sourceTree = "<group>"; };
 		55A25E5E21B879080055EE98 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		55EC1E5321B77F4E00A1293C /* SeeAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeeAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55EC1E5621B77F4E00A1293C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				559CB69421B9AEE20081B3F4 /* UIView+Extension.swift */,
-				559CB69721B9AF040081B3F4 /* SCNNode+Extension.swift */,
+				559CB69721B9AF040081B3F4 /* SCNNode+Distanceable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -101,7 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				559CB69A21B9E83F0081B3F4 /* VectorCalculatable.swift */,
-				559CB6A121BA34E90081B3F4 /* SCNNodeDistanceable.swift */,
+				559CB6A121BA34E90081B3F4 /* Distanceable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -313,12 +313,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				559CB69821B9AF040081B3F4 /* SCNNode+Extension.swift in Sources */,
+				559CB69821B9AF040081B3F4 /* SCNNode+Distanceable.swift in Sources */,
 				559CB69B21B9E83F0081B3F4 /* VectorCalculatable.swift in Sources */,
 				559CB69521B9AEE20081B3F4 /* UIView+Extension.swift in Sources */,
 				55EC1E5B21B77F4E00A1293C /* ViewController.swift in Sources */,
 				55EC1E5721B77F4E00A1293C /* AppDelegate.swift in Sources */,
-				559CB6A221BA34E90081B3F4 /* SCNNodeDistanceable.swift in Sources */,
+				559CB6A221BA34E90081B3F4 /* Distanceable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
