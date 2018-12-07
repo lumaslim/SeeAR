@@ -10,33 +10,8 @@ import UIKit
 import SceneKit
 import ARKit
 
-extension SCNNode {
-    func distance(to destination: SCNNode) -> CGFloat {
-        // - TODO: Try overloading operators for vector calculation practice.
-        
-        // Alias
-        let pt1: SCNVector3 = self.position
-        let pt2: SCNVector3 = destination.position
-        print("Compare distance pt1 pt2", pt1, pt2)
-        // For Cartesian distance in metres
-        let dx: Float = pt2.x - pt1.x
-        let dy: Float = pt2.y - pt1.y
-        let dz: Float = pt2.z - pt1.z
-        
-        let metres: CGFloat = CGFloat( sqrt(dx * dx + dy * dy + dz * dz) )
-        print("Compare distance metres", metres, dx, dy, dz)
-        return metres
-    }
-    
-    /// Distance formula for SCNNodes utility. Calculate the distance between
-    /// this node in relation to the destination node referenced.
-    ///
-    /// - Parameter destination: The destination relative ref point to calculate
-    /// - Returns: distance in centimetres
-    func distanceInCentimetres(to destination: SCNNode) -> CGFloat {
-        return self.distance(to: destination) * 100
-    }
-}
+
+
 class ViewController: UIViewController, ARSCNViewDelegate {
     
     // temp string template for measurements - TODO: Enum localisation  https://stackoverflow.com/questions/29424637/create-string-template-in-swift
@@ -141,7 +116,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         print("ViewController:: isTap())", sender)
         
         
-        let tapLocation = sender.location(in: sceneView)
+        let tapLocation: CGPoint = sender.location(in: sceneView)
         let hitTestResults: [ARHitTestResult] = sceneView.hitTest(tapLocation, types: [ARHitTestResult.ResultType.featurePoint])
         // Feature point nearest to the hit ray AR from real world space.
         guard let tapPoint: ARHitTestResult = hitTestResults.last else {
@@ -150,7 +125,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
         print(tapPoint.anchor ?? 0, tapPoint.distance, tapPoint.accessibilityActivationPoint)
         
-        // example code is messy.... too much global state.
+        // example code is messy.... and too much global state.
         
         // Should split off a spherehandler.
         
