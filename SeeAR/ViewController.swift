@@ -104,7 +104,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let skyBlue = UIColor(red: 0, green: 0.87, blue: 0.90, alpha: 1)
         material.diffuse.contents = skyBlue
         
-        material.lightingModel = .blinn
+        material.lightingModel = .physicallyBased
         
         return material
     }
