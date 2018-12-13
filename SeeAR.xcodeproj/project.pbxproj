@@ -331,7 +331,6 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/newInputFile",
 			);
 			outputFileListPaths = (
 			);
@@ -339,7 +338,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/Users/slim/Projects/Code/AR/Apps/SeeAR/SeeAR/Scripts\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nbuildNumber=$(git rev-list --count HEAD)\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$PRODUCT_SETTINGS_PATH\"\n# Use Build run script phase in project rather than bot. Xcode Server pre-integration hook in Xcode 10 no longer has access to the same environment variables and build resources? Changes in build steps.\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
