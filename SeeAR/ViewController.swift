@@ -31,7 +31,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         self.sceneView.delegate = self
         // Show statistics such as fps and timing information
         self.sceneView.showsStatistics = true
-        
+        self.sceneView.debugOptions = [.showBoundingBoxes, .showFeaturePoints, .showConstraints]
 //        // Create a new scene
 //        let scene = SCNScene(named: "art.scnassets/ship.scn")!
 //
