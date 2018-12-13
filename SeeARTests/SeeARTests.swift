@@ -11,6 +11,7 @@ import XCTest
 
 class SeeARTests: XCTestCase {
 
+    // Save AR2DPointCloud and re run to check measurement with positions. Also check UI tap gets similar positioning and measurement?
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
