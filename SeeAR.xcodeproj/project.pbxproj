@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		558E170D21C270BC00DCD26B /* buildVersionIncrementer.sh in Resources */ = {isa = PBXBuildFile; fileRef = 558E170C21C270BC00DCD26B /* buildVersionIncrementer.sh */; };
 		559CB69521B9AEE20081B3F4 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559CB69421B9AEE20081B3F4 /* UIView+Extension.swift */; };
 		559CB69821B9AF040081B3F4 /* SCNNode+Distanceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559CB69721B9AF040081B3F4 /* SCNNode+Distanceable.swift */; };
 		559CB69B21B9E83F0081B3F4 /* VectorCalculatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559CB69A21B9E83F0081B3F4 /* VectorCalculatable.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		558E170C21C270BC00DCD26B /* buildVersionIncrementer.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = buildVersionIncrementer.sh; sourceTree = "<group>"; };
 		559CB69421B9AEE20081B3F4 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		559CB69721B9AF040081B3F4 /* SCNNode+Distanceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNNode+Distanceable.swift"; sourceTree = "<group>"; };
 		559CB69A21B9E83F0081B3F4 /* VectorCalculatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorCalculatable.swift; sourceTree = "<group>"; };
@@ -88,6 +90,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		558E170B21C270BC00DCD26B /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				558E170C21C270BC00DCD26B /* buildVersionIncrementer.sh */,
+			);
+			name = Scripts;
+			path = SeeAR/Scripts;
+			sourceTree = "<group>";
+		};
 		559CB69621B9AEE90081B3F4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +128,7 @@
 		55EC1E4A21B77F4E00A1293C = {
 			isa = PBXGroup;
 			children = (
+				558E170B21C270BC00DCD26B /* Scripts */,
 				55EC1E5521B77F4E00A1293C /* SeeAR */,
 				55EC1E6C21B77F5000A1293C /* SeeARTests */,
 				55EC1E7721B77F5000A1293C /* SeeARUITests */,
@@ -180,6 +192,7 @@
 				55EC1E4F21B77F4E00A1293C /* Sources */,
 				55EC1E5021B77F4E00A1293C /* Frameworks */,
 				55EC1E5121B77F4E00A1293C /* Resources */,
+				558E170A21C2700300DCD26B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -287,6 +300,7 @@
 			files = (
 				55EC1E5921B77F4E00A1293C /* art.scnassets in Resources */,
 				55EC1E6321B77F5000A1293C /* LaunchScreen.storyboard in Resources */,
+				558E170D21C270BC00DCD26B /* buildVersionIncrementer.sh in Resources */,
 				55EC1E6021B77F5000A1293C /* Assets.xcassets in Resources */,
 				55EC1E5E21B77F4E00A1293C /* Main.storyboard in Resources */,
 			);
@@ -307,6 +321,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		558E170A21C2700300DCD26B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/newInputFile",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/Users/slim/Projects/Code/AR/Apps/SeeAR/SeeAR/Scripts\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		55EC1E4F21B77F4E00A1293C /* Sources */ = {
