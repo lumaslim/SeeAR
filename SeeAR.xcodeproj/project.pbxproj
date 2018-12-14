@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		558E170D21C270BC00DCD26B /* buildVersionIncrementer.sh in Resources */ = {isa = PBXBuildFile; fileRef = 558E170C21C270BC00DCD26B /* buildVersionIncrementer.sh */; };
+		559CB69521B9AEE20081B3F4 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559CB69421B9AEE20081B3F4 /* UIView+Extension.swift */; };
+		559CB69821B9AF040081B3F4 /* SCNNode+Distanceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559CB69721B9AF040081B3F4 /* SCNNode+Distanceable.swift */; };
+		559CB69B21B9E83F0081B3F4 /* VectorCalculatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559CB69A21B9E83F0081B3F4 /* VectorCalculatable.swift */; };
+		559CB6A221BA34E90081B3F4 /* Distanceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559CB6A121BA34E90081B3F4 /* Distanceable.swift */; };
 		55A25E5F21B879080055EE98 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55A25E5E21B879080055EE98 /* CloudKit.framework */; };
 		55EC1E5721B77F4E00A1293C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC1E5621B77F4E00A1293C /* AppDelegate.swift */; };
 		55EC1E5921B77F4E00A1293C /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 55EC1E5821B77F4E00A1293C /* art.scnassets */; };
@@ -36,6 +41,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		558E170C21C270BC00DCD26B /* buildVersionIncrementer.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = buildVersionIncrementer.sh; sourceTree = "<group>"; };
+		559CB69421B9AEE20081B3F4 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		559CB69721B9AF040081B3F4 /* SCNNode+Distanceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNNode+Distanceable.swift"; sourceTree = "<group>"; };
+		559CB69A21B9E83F0081B3F4 /* VectorCalculatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorCalculatable.swift; sourceTree = "<group>"; };
+		559CB6A121BA34E90081B3F4 /* Distanceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distanceable.swift; sourceTree = "<group>"; };
 		55A25E5E21B879080055EE98 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		55EC1E5321B77F4E00A1293C /* SeeAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeeAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55EC1E5621B77F4E00A1293C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +90,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		558E170B21C270BC00DCD26B /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				558E170C21C270BC00DCD26B /* buildVersionIncrementer.sh */,
+			);
+			name = Scripts;
+			path = SeeAR/Scripts;
+			sourceTree = "<group>";
+		};
+		559CB69621B9AEE90081B3F4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				559CB69421B9AEE20081B3F4 /* UIView+Extension.swift */,
+				559CB69721B9AF040081B3F4 /* SCNNode+Distanceable.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		559CB69921B9B4C20081B3F4 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				559CB69A21B9E83F0081B3F4 /* VectorCalculatable.swift */,
+				559CB6A121BA34E90081B3F4 /* Distanceable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		55A25E5D21B879080055EE98 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +128,7 @@
 		55EC1E4A21B77F4E00A1293C = {
 			isa = PBXGroup;
 			children = (
+				558E170B21C270BC00DCD26B /* Scripts */,
 				55EC1E5521B77F4E00A1293C /* SeeAR */,
 				55EC1E6C21B77F5000A1293C /* SeeARTests */,
 				55EC1E7721B77F5000A1293C /* SeeARUITests */,
@@ -112,6 +150,8 @@
 		55EC1E5521B77F4E00A1293C /* SeeAR */ = {
 			isa = PBXGroup;
 			children = (
+				559CB69621B9AEE90081B3F4 /* Extensions */,
+				559CB69921B9B4C20081B3F4 /* Protocols */,
 				55EC1E8621B7868800A1293C /* SeeAR.entitlements */,
 				55EC1E5621B77F4E00A1293C /* AppDelegate.swift */,
 				55EC1E5821B77F4E00A1293C /* art.scnassets */,
@@ -152,6 +192,7 @@
 				55EC1E4F21B77F4E00A1293C /* Sources */,
 				55EC1E5021B77F4E00A1293C /* Frameworks */,
 				55EC1E5121B77F4E00A1293C /* Resources */,
+				558E170A21C2700300DCD26B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -259,6 +300,7 @@
 			files = (
 				55EC1E5921B77F4E00A1293C /* art.scnassets in Resources */,
 				55EC1E6321B77F5000A1293C /* LaunchScreen.storyboard in Resources */,
+				558E170D21C270BC00DCD26B /* buildVersionIncrementer.sh in Resources */,
 				55EC1E6021B77F5000A1293C /* Assets.xcassets in Resources */,
 				55EC1E5E21B77F4E00A1293C /* Main.storyboard in Resources */,
 			);
@@ -280,13 +322,37 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		558E170A21C2700300DCD26B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nbuildNumber=$(git rev-list --count HEAD)\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$PRODUCT_SETTINGS_PATH\"\n# Use Build run script phase in project rather than bot. Xcode Server pre-integration hook in Xcode 10 no longer has access to the same environment variables and build resources? Changes in build steps.\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		55EC1E4F21B77F4E00A1293C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				559CB69821B9AF040081B3F4 /* SCNNode+Distanceable.swift in Sources */,
+				559CB69B21B9E83F0081B3F4 /* VectorCalculatable.swift in Sources */,
+				559CB69521B9AEE20081B3F4 /* UIView+Extension.swift in Sources */,
 				55EC1E5B21B77F4E00A1293C /* ViewController.swift in Sources */,
 				55EC1E5721B77F4E00A1293C /* AppDelegate.swift in Sources */,
+				559CB6A221BA34E90081B3F4 /* Distanceable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
