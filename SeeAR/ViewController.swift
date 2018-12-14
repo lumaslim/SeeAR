@@ -90,18 +90,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         self.sceneView.session.pause()
     }
 
-    // MARK: - Setup
-    
-    func getMeasurementLabel() -> UILabel {
-        let measurementLabel = UILabel()
-        // Label background and formatting to show measurements
-        measurementLabel.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100)
-        measurementLabel.backgroundColor = .white
-        measurementLabel.text = self.formatMeasurementText(metricLength: 0.00)
-        measurementLabel.textAlignment = .center
-        
-        return measurementLabel
-    }
+
     
     // MARK: - Utilities
     func getSphereNode(at position: SCNVector3) -> SCNNode {
@@ -223,5 +212,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
+    }
+}
+// MARK: - Setup
+extension ViewController { // ViewControllerΩΩΩ««|«»»’∏¸
+    func getMeasurementLabel() -> UILabel {
+        let measurementLabel = UILabel()
+        // Label background and formatting to show measurements
+        measurementLabel.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100)
+        measurementLabel.backgroundColor = .white
+        measurementLabel.text = self.formatMeasurementText(metricLength: 0.00)
+        measurementLabel.textAlignment = .center
+        
+        return measurementLabel
     }
 }
